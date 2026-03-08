@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<h1>{{ page.title }}</h1>
+
+{% if page.gif %}
+    <img src="{{ page.gif.file.url }}" width="400">
+{% endif %}
+
+<div>
+    {{ page.body|richtext }}
+</div>
+
+<div class="insta-embed">
+<blockquote class="instagram-media"
+data-instgrm-permalink="https://www.instagram.com/p/DS7VL-AEmpS/">
+</blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+</div>
+{% endblock %}
