@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<h1>{{ page.title }}</h1>
+
+{% if page.gif %}
+    <img src="{{ page.gif.file.url }}" width="400">
+{% endif %}
+
+<div>
+    {{ page.body|richtext }}
+</div>
+
+<a class="gallery-button" href="/all-2025-hange-art/">Enter Hange Gallery</a>
+{% endblock %}

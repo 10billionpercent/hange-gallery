@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+{% for block in page.sections %}
+
+<h1>{{ block.value.title }}</h1>
+
+<div id="carousel{{ forloop.counter }}" class="carousel slide">
+
+  <div class="carousel-inner">
+
+    {% for item in block.value.artworks %}
+      {% with art=item.artwork.specific %}
+
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="carousel-img-wrapper">
+
+          <a href="{{ art.url }}" target="_blank">
+            <img src="{{ art.image.file.url }}">
+          </a>
+
+        </div>
+      </div>
+
+      {% endwith %}
+    {% endfor %}
+
+  </div>
+
+  <button class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carousel{{ forloop.counter }}"
+          data-bs-slide="prev">
+
+      <span class="carousel-control-prev-icon"></span>
+
+  </button>
+
+  <button class="carousel-control-next"
+          type="button"
+          data-bs-target="#carousel{{ forloop.counter }}"
+          data-bs-slide="next">
+
+      <span class="carousel-control-next-icon"></span>
+
+  </button>
+
+</div>
+
+{% endfor %}
+
+
+{% endblock %}

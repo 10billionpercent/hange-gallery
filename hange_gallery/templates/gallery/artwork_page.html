@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<h1>{{ page.title }}</h1>
+
+{% if page.image %}
+    <img src="{{ page.image.file.url }}" width="500">
+{% endif %}
+
+<div>
+    {{ page.description|richtext }}
+</div>
+
+{% endblock %}
