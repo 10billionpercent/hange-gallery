@@ -19,4 +19,16 @@ data-instgrm-permalink="https://www.instagram.com/p/DS7VL-AEmpS/">
 </blockquote>
 <script async src="//www.instagram.com/embed.js"></script>
 </div>
+
+<form action="{% pageurl page %}" method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">
+Send Commission Request
+</button>
+
+</form>
 {% endblock %}

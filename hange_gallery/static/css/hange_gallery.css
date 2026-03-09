@@ -53,3 +53,7 @@ body {
 .nav-links a:hover {
     text-decoration: underline;
 }
+
+iframe {
+    background-color: black;
+}
