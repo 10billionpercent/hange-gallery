@@ -5,10 +5,6 @@
 
 <h1>{{ page.title }}</h1>
 
-{% if page.gif %}
-    <img src="{{ page.gif.file.url }}" width="400">
-{% endif %}
-
 <div>
     {{ page.body|richtext }}
 </div>
