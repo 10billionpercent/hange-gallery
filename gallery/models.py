@@ -1,11 +1,10 @@
 from django.db import models
-
+import random
 from wagtail.models import Page
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 from wagtail.images.models import Image
 from wagtail.fields import StreamField
-from wagtail.admin.panels import FieldPanel
 from .blocks import MonthSectionBlock
 
 class GalleryPage(Page):
@@ -38,8 +37,29 @@ class ArtworkPage(Page):
 
     created_date = models.DateField()
 
+    suggested_count = models.IntegerField(
+        default=3,
+        help_text='Number of artworks to suggest'
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel("image"),
         FieldPanel("description"),
         FieldPanel("created_date"),
+        FieldPanel("suggested_count")
     ]
+    def get_suggested_artworks(self):
+
+        pages = list(
+            ArtworkPage.objects.live().exclude(id=self.id)
+        )
+
+        return random.sample(pages, min(len(pages), self.suggested_count))
+
+    def get_context(self, request):
+
+        context = super().get_context(request)
+
+        context["suggested_artworks"] = self.get_suggested_artworks()
+
+        return context

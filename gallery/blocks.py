@@ -1,6 +1,7 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import PageChooserBlock
+from wagtail.fields import StreamField
 
 
 class ArtworkLinkBlock(blocks.StructBlock):
@@ -18,3 +19,4 @@ class MonthSectionBlock(blocks.StructBlock):
     class Meta:
         icon = "folder-open-inverse"
         label = "Month Section"
+
