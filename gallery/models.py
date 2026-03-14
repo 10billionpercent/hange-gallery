@@ -17,9 +17,7 @@ class GalleryPage(Page):
     blank=True,
 )
 
-    content_panels = Page.content_panels + [
-        FieldPanel("sections"),
-    ]
+    content_panels = Page.content_panels + ["sections"]
 
 
 class ArtworkPage(Page):
@@ -42,12 +40,7 @@ class ArtworkPage(Page):
         help_text='Number of artworks to suggest'
     )
 
-    content_panels = Page.content_panels + [
-        FieldPanel("image"),
-        FieldPanel("description"),
-        FieldPanel("created_date"),
-        FieldPanel("suggested_count")
-    ]
+    content_panels = Page.content_panels + ["image", "description","created_date","suggested_count"]
     def get_suggested_artworks(self):
 
         pages = list(
