@@ -15,16 +15,7 @@
       {% with art=item.artwork.specific %}
 
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        <div class="carousel-img-wrapper">
-
-          <a href="{{ art.url }}" target="_blank">
-            <img src="{{ art.image.file.url }}">
-
-            <div class="art-title">
-              <h3> {{ art.title }}</h3>
-            </div>
-          </a>
-        </div>
+        {% include "includes/card.html" with variant="carousel-card" %}
       </div>
 
       {% endwith %}
@@ -32,23 +23,8 @@
 
   </div>
 
-  <button class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carousel{{ forloop.counter }}"
-          data-bs-slide="prev">
-
-      <span class="carousel-control-prev-icon"></span>
-
-  </button>
-
-  <button class="carousel-control-next"
-          type="button"
-          data-bs-target="#carousel{{ forloop.counter }}"
-          data-bs-slide="next">
-
-      <span class="carousel-control-next-icon"></span>
-
-  </button>
+{% include "includes/button.html" with position="prev" %}  
+{% include "includes/button.html" with position="next" %} 
 
 </div>
 

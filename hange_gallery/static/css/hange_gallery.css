@@ -15,18 +15,18 @@ body {
     font-weight: bold;
 }
 
-.carousel-img-wrapper {
+.carousel-card {
     display: flex;
     justify-content: center;
 }
 
-.carousel-img-wrapper a {
+.carousel-card a {
     position: relative;
     display: inline-block;
     overflow: hidden;
 }
 
-.carousel-img-wrapper img {
+.carousel-card img {
     max-height: 500px;
     width: auto;
     transition: transform 0.5s ease;
@@ -90,12 +90,12 @@ iframe {
     transform: translateY(30px);
 }
 
-.carousel-img-wrapper:hover .art-title {
+.carousel-card:hover .art-title {
     opacity: 1;
     transform: translateY(0);
 }
 
-.carousel-img-wrapper:hover img {
+.carousel-card:hover img {
     transform: scale(1.2);
 }
 
@@ -103,8 +103,4 @@ iframe {
     display: flex;
     gap: 20px;
     margin-top: 40px;
-}
-
-.suggested-grid img {
-    width: 250px;
 }

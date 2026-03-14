@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+
+<div class="{{ variant }}">
+    <a href="{{ art.url }}" target="_blank">
+{% srcset_image art.image width-{400,800} sizes="(max-width: 600px) 400px, 800px" %}
+        <div class="art-title">
+            <h3> {{ art.title }}</h3>
+        </div>
+    </a>
+</div>
