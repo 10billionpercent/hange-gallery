@@ -10,4 +10,5 @@
   #c48b73,
   var(--primary)
   );
+  --glow-primary: rgba(156,103,80,0.7);
 }
