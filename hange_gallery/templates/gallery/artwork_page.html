@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block content %}
+<div class="container-fluid px-4"> 
+    <div class="row g-2 align-items-center">
+        <!-- Left Side -->
+<div class="col-md-6 d-flex flex-column align-items-center">
+            <h1 class="page-heading">{{ page.title }}</h1>
+            {% if page.image %}
+                {% include "includes/image.html" with image=page.image variant="large" %} 
+            {% endif %}
+        </div>
 
-<h1>{{ page.title }}</h1>
-
-{% if page.image %}
-    <img src="{{ page.image.file.url }}" width="500">
-{% endif %}
-
-<div>
-    {{ page.description|richtext }}
+        <!-- Right Side -->
+        <div class="col-md-6">
+            <div>{{ page.description|richtext }}</div>
+            {% include "includes/suggested_block.html" %}
+        </div>
+    </div>
 </div>
 
-{% include "includes/suggested_block.html" %}
 {% endblock %}

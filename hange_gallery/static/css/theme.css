@@ -1,0 +1,13 @@
+:root {
+  --primary: #ba866a;
+  --secondary: #743620;
+  --bg-soft: #191212;
+  --radius-lg: 18px;
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+  --gradient-primary: linear-gradient(
+  90deg,
+  var(--secondary),
+  #c48b73,
+  var(--primary)
+  );
+}

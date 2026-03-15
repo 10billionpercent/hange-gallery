@@ -5,7 +5,7 @@
 
 {% for block in page.sections %}
 
-<h1>{{ block.value.title }}</h1>
+<h1 class="month-heading">{{ block.value.title }}</h1>
 
 <div id="carousel{{ forloop.counter }}" class="carousel slide">
 
@@ -15,7 +15,7 @@
       {% with art=item.artwork.specific %}
 
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        {% include "includes/card.html" with variant="carousel-card" %}
+        {% include "includes/link_card.html" with variant="carousel-card" %}
       </div>
 
       {% endwith %}
@@ -23,8 +23,8 @@
 
   </div>
 
-{% include "includes/button.html" with position="prev" %}  
-{% include "includes/button.html" with position="next" %} 
+{% include "includes/nav_button.html" with position="prev" %}  
+{% include "includes/nav_button.html" with position="next" %} 
 
 </div>
 

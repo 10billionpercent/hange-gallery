@@ -1,0 +1,17 @@
+{% load wagtailimages_tags %}
+
+<div class="{{ variant }}">
+    <a href="{{ art.url }}" target="_blank">
+{% if variant == "carousel-card" %}
+{% include "includes/image.html" with image=art.image variant="medium" %}
+{% endif %}
+
+{% if variant == "suggested-card" %}
+{% include "includes/image.html" with image=art.image variant="small" %}
+{% endif %}
+
+        <div class="art-title">
+            <h4> {{ art.title }}</h4>
+        </div>
+    </a>
+</div>

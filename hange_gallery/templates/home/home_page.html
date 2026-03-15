@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block content %}
 
-<h1>{{ page.title }}</h1>
+<h1 class="page-heading">{{ page.title }}</h1>
 
 {% if page.gif %}
-    <img src="{{ page.gif.file.url }}" width="400">
+{% include "includes/image.html" with image=page.gif variant="large" %}
 {% endif %}
 
 <div>
