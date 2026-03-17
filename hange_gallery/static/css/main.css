@@ -86,9 +86,10 @@ body {
     font-weight: bold;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
+.nav-link a:hover {
+    color: var(--primary);
 }
+
 .nav-link {
     position: relative;
     text-decoration: none;
