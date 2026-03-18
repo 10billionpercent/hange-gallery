@@ -6,13 +6,50 @@ body {
     flex-direction: column;
 }
 
-.gallery-button {
+.cta-button {
     display: inline-block;
-    padding: 10px 20px;
-    color: white;
-    background-color: black;
+    padding: 20px;
+    color: var(--bg-soft);
+    background-color: var(--primary);
     text-decoration: none;
     font-weight: bold;
+    width: fit-content;
+    border-radius: 8px;
+    position: relative;   /* REQUIRED */
+    overflow: hidden;     
+    transition: color 1s ease; 
+    z-index: 1;
+    isolation: isolate;
+}
+
+.cta-button:hover {
+    color: white;
+}
+
+.cta-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400%; /* Make the element itself huge */
+    height: 100%;
+    background: var(--gradient-primary);
+    background-size: 25% 100%; /* 25% of 400% = 100% of the button width */
+    
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    /* Move the whole layer instead of the background image */
+    animation: move-gradient 10s linear infinite;
+    animation-play-state: paused;
+
+    filter: blur(1px);
+}
+
+.cta-button:hover::before {
+    opacity: 1;
+    animation-play-state: running;  /* ▶️ start on hover */
 }
 
 .carousel-card {
@@ -150,4 +187,9 @@ iframe {
     display: flex;
     gap: 20px;
     margin-top: 40px;
+}
+
+@keyframes move-gradient {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); } /* Slides exactly two color cycles */
 }
