@@ -4,19 +4,26 @@
 
 {% block content %}
 <div class="container-fluid px-4"> 
-    <div class="row g-4 align-items-start"> <div class="col-md-6">
-            <h1 class="page-heading">{{ page.title }}</h1>
-            {% if page.gif %}
-                {% include "includes/image.html" with image=page.gif variant="large" %}
-            {% endif %}
-        </div>
-
+    <div class="row g-4 align-items-start"> 
         <div class="col-md-6">
+            <h1 class="page-heading">{{ page.title }} </h1>
             <div class="rich-text-content mb-4">
                 {{ page.body|richtext }}
             </div>
             <a class="cta-button" href="/all-2025-hange-art/">Enter Hange Gallery</a>
         </div>
+
+        <div class="col-md-6">
+  <div class="hange-image-wrapper">
+    
+    <!-- blurred background -->
+    <div class="hange-blur"></div>
+
+    <!-- actual image -->
+    {% include "includes/image.html" with image=page.hero_image variant="large" %}
+
+  </div>
+</div>
 
     </div> </div> 
 

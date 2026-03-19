@@ -2,7 +2,6 @@
 
 <div class="overflow-hidden rounded-4">
     {% if variant == "large" %}
-        {# Add the class here #}
         {% srcset_image image width-{500,800} sizes="(max-width: 600px) 500px, 800px" %} 
     {% elif variant == "medium" %}
         {% srcset_image image width-{300,800} sizes="(max-width: 600px) 300px, 800px" %}
