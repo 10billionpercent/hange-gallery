@@ -7,5 +7,7 @@
         {% srcset_image image width-{300,800} sizes="(max-width: 600px) 300px, 800px" %}
     {% elif variant == "thumbnail" %}
         {% image image fill-200x200 %}
+    {% elif variant == "hero_image" %}
+        {% image image fill-500x500 %}
     {% endif %}
 </div>
