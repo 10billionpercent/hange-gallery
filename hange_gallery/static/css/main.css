@@ -100,7 +100,6 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     
-    /* Move the whole layer instead of the background image */
     animation: move-gradient 10s linear infinite;
     animation-play-state: paused;
 
@@ -109,7 +108,7 @@ body {
 
 .cta-button:hover::before {
     opacity: 1;
-    animation-play-state: running;  /* ▶️ start on hover */
+    animation-play-state: running;  
 }
 
 .carousel-card {
@@ -223,6 +222,11 @@ body {
 }
 
 .nav-link:hover::after {
+    width: 100%;
+    box-shadow: 0 0 12px var(--primary);
+}
+
+.nav-link.active::after {
     width: 100%;
     box-shadow: 0 0 12px var(--primary);
 }

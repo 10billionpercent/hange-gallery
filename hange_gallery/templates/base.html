@@ -31,19 +31,22 @@
 
       <ul class="navbar-nav ms-auto">
 
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
+  <li class="nav-item">
+    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+  </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/all-2025-hange-art/">Gallery</a>
-        </li>
+  {% load wagtailcore_tags %}
+  <li class="nav-item">
+    {% slugurl 'all-2025-hange-art' as gallery_url %}
+    <a class="nav-link {% if request.path == gallery_url %}active{% endif %}" href="{{ gallery_url }}">Gallery</a>
+  </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/about-me/">About</a>
-        </li>
+  <li class="nav-item">
+    {% slugurl 'about-me' as about_url %}
+    <a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{{ about_url }}">About</a>
+  </li>
 
-      </ul>
+</ul>
 
     </div>
 
