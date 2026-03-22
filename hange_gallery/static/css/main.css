@@ -52,14 +52,18 @@ body {
 }
 
 .hange-image-wrapper:hover::after {
-    /* Slightly less shadow coverage to let the image 'breathe' a bit more */
     box-shadow: inset 0 0 70px 30px var(--bg-soft);
 }
 
-/* blurred dreamy layer */
 .hange-blur {
     mask-image: radial-gradient(circle, black 40%, transparent 80%);
     -webkit-mask-image: radial-gradient(circle, black 40%, transparent 80%);
+}
+
+.hange-link-overlay {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .cta-button {

@@ -10,19 +10,21 @@
             <div class="rich-text-content mb-4">
                 {{ page.body|richtext }}
             </div>
-            <a class="cta-button" href="/all-2025-hange-art/">Enter Hange Gallery</a>
+            <a class="cta-button" href="{% pageurl page.cta_link %}">
+          {{ page.cta_text }}
+          </a>
         </div>
 
         <div class="col-md-6">
-  <div class="hange-image-wrapper align-items-center">
-    
-    <!-- blurred background -->
-    <div class="hange-blur"></div>
-
-    <!-- actual image -->
-    {% include "includes/image.html" with image=page.hero_image variant="hero_image" %}
-
-  </div>
+    <div class="hange-image-wrapper">
+        {% if page.hero_link %}
+            <a href="{% pageurl page.hero_link %}" class="hange-link-overlay">
+                {% include "includes/image.html" with image=page.hero_image variant="hero_image" %}
+            </a>
+        {% else %}
+            {% include "includes/image.html" with image=page.hero_image variant="hero_image" %}
+        {% endif %}
+    </div>
 </div>
 
     </div> </div> 
