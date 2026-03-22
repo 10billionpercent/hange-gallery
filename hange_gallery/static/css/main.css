@@ -121,6 +121,9 @@ body {
     position: relative;
     display: inline-block;
     overflow: hidden;
+    
+    border-radius: var(--radius-lg); 
+    isolation: isolate; 
 }
 
 .carousel-card img {
@@ -215,6 +218,7 @@ iframe {
 .art-title {
     position: absolute;
     inset: 0;
+    overflow: hidden;
 
     background: var(--overlay-gradient);
     color: white;
@@ -251,5 +255,5 @@ iframe {
 
 @keyframes move-gradient {
     0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); } /* Slides exactly two color cycles */
+    100% { transform: translateX(0); } 
 }
