@@ -15,19 +15,29 @@ class FormField(AbstractFormField):
         related_name="form_fields",
     )
 
-
 class AboutPage(AbstractEmailForm):
-
     body = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
 
-    # add these
     to_address = models.CharField(max_length=255, blank=True)
     from_address = models.CharField(max_length=255, blank=True)
     subject = models.CharField(max_length=255, blank=True)
 
+    use_modal_form = models.BooleanField(
+        default=False, 
+        verbose_name="Open form in a modal?"
+    )
+    modal_button_text = models.CharField(
+        max_length=255, 
+        blank=True, 
+        default="Want a custom artwork? I do commissions too!",
+        verbose_name="Modal Trigger Button Text"
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel("body"),
+        FieldPanel("use_modal_form"),
+        FieldPanel("modal_button_text"),
         InlinePanel("form_fields", label="Form fields"),
         FieldPanel("thank_you_text"),
     ]
