@@ -1,5 +1,6 @@
 from django.db import models
 
+from django.shortcuts import render
 from wagtail.models import Page
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel, InlinePanel
@@ -18,14 +19,23 @@ class FormField(AbstractFormField):
 
 class AboutPage(AbstractEmailForm):
     body = RichTextField(blank=True)
-    thank_you_image = models.ForeignKey(
+    success_image = models.ForeignKey(
         Image,
         on_delete=models.SET_NULL,
         null=True,
-        blank=False,
+        blank=True,
         related_name="+",
     )
-    thank_you_text = RichTextField(blank=True)
+    success_text = RichTextField(blank=False)
+
+    error_image = models.ForeignKey(
+        Image,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
+    error_text = RichTextField(blank=False)
 
     to_address = models.CharField(max_length=255, blank=True)
     from_address = models.CharField(max_length=255, blank=True)
@@ -42,13 +52,26 @@ class AboutPage(AbstractEmailForm):
         verbose_name="Modal Trigger Button Text"
     )
 
+    def render_landing_page(self, request, form_submission=None, *args, **kwargs):
+        context = self.get_context(request)
+        context['form_submission'] = form_submission
+        context['is_error'] = False if form_submission else True
+        
+        return render(
+            request,
+            self.get_landing_page_template(request),
+            context
+        )
+
     content_panels = Page.content_panels + [
-        FieldPanel("body"),
-        FieldPanel("use_modal_form"),
-        FieldPanel("modal_button_text"),
+        "body",
+        "use_modal_form",
+        "modal_button_text",
         InlinePanel("form_fields", label="Form fields"),
-        FieldPanel("thank_you_text"),
-        FieldPanel("thank_you_image")
+        "success_text",
+        "success_image",
+        "error_text",
+        "error_image"
     ]
 
     promote_panels = Page.promote_panels

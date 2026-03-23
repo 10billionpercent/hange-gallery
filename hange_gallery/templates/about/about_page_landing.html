@@ -3,42 +3,74 @@
 {% load static %}
 
 {% block content %}
-<div class="container d-flex align-items-center justify-content-center">
-    <div class="text-center p-5 commission-modal">
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 75vh;">
+    <div class="text-center p-5 commission-modal success-card {% if is_error %}error-state{% endif %}">
         
         <div class="mb-4">
-            {% if page.thank_you_image %}
-                {% image page.thank_you_image fill-200x200 as chibi_img %}
-                <img src="{{ chibi_img.url }}" 
-                     alt="Happy Hange" 
-                     class="chibi-bounce"
-                     style="width: 180px; height: auto; filter: drop-shadow(0 0 15px var(--success));">
+    {% if is_error %}
+        {% if page.error_image %}
+            {% image page.error_image fill-200x200 as err_img %}
+            <img src="{{ err_img.url }}" alt="Error Hange" class="chibi-error-slide" style="filter: drop-shadow(0 0 15px var(--error));">
+        {% else %}
+            <div style="font-size: 4rem;">⚠️</div>
+        {% endif %}
+    {% else %}
+        {% if page.success_image %}
+            {% image page.success_image fill-200x200 as chibi_img %}
+            <img src="{{ chibi_img.url }}" alt="Happy Hange" class="chibi-bounce landing-chibi" style="filter: drop-shadow(0 0 15px var(--success));">
+        {% else %}
+            <div style="font-size: 4rem;">✨</div>
+        {% endif %}
+    {% endif %}
+</div>
+
+        <h1 class="page-heading mb-3">
+            {% if is_error %}Titan Interference?{% else %}Submission Success!{% endif %}
+        </h1>
+        
+        <div class="about-text mb-4">
+            {% if is_error %}
+                {{ page.error_text|richtext }}
             {% else %}
-                <div style="font-size: 4rem;">✨</div>
+                {{ page.success_text|richtext }}
             {% endif %}
         </div>
 
-        <h1 class="page-heading mb-3">Submission Success!</h1>
-        
-        <div class="about-text mb-4" style="font-size: 1.1rem; line-height: 1.6;">
-            {{ page.thank_you_text|richtext }}
-        </div>
-
-        <a href="{% pageurl page %}" class="cta-button d-inline-block px-5 py-2" style="text-decoration: none;">
-            Return to Gallery
-        </a>
+        <a href="{% if is_error %}{% pageurl page %}{% else %}/gallery/{% endif %}" class="cta-button">
+    {% if is_error %}
+        Try Again 
+    {% else %}
+        Back to Gallery
+    {% endif %}
+</a>
     </div>
 </div>
 
 <style>
-/* Simple bounce animation to make the chibi look alive */
+/* --- SUCCESS: Up and Down --- */
 .chibi-bounce {
-    animation: bounce 2s infinite ease-in-out;
+    animation: success-bounce 2s infinite ease-in-out;
 }
 
-@keyframes bounce {
+@keyframes success-bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
+}
+
+/* --- ERROR: Side to Side --- */
+.chibi-error-slide {
+    animation: error-slide 1.5s infinite ease-in-out;
+    width: 180px;
+    height: auto;
+}
+
+@keyframes error-slide {
+    0%, 100% { 
+        transform: translateX(-40px) rotate(-5deg); /* Start at Far Left */
+    }
+    50% { 
+        transform: translateX(40px) rotate(5deg);  /* End at Far Right */
+    }
 }
 </style>
 {% endblock %}
