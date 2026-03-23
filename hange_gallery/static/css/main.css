@@ -231,10 +231,6 @@ body {
     box-shadow: 0 0 12px var(--primary);
 }
 
-iframe {
-    background-color: black;
-}
-
 .art-title {
     position: absolute;
     inset: 0;
@@ -271,6 +267,11 @@ iframe {
     display: flex;
     gap: 20px;
     margin-top: 40px;
+}
+
+.modal-content.commission-modal, .modal-content.commission-modal input, textarea {
+    background-color: var(--bg-soft);
+    color: white;
 }
 
 @keyframes move-gradient {

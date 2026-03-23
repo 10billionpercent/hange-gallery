@@ -36,8 +36,10 @@
                 {% csrf_token %}
                 {% for field in form %}
                     <div class="mb-3">
-                        <label class="form-label">{{ field.label }}</label>
-                        {{ field }} </div>
+                        <label class="form-label">{{ field.label }}
+                        {{ field }} 
+                        </label>
+                    </div>
                 {% endfor %}
                 <button type="submit" class="cta-button w-100 mt-3">Send Request</button>
             </form>
