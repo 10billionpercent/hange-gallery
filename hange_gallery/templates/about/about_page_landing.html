@@ -1,16 +1,44 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static %}
 
 {% block content %}
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="text-center p-5 commission-modal shadow-lg">
+        
+        <div class="mb-4">
+            {% if page.thank_you_image %}
+                {% image page.thank_you_image fill-200x200 as chibi_img %}
+                <img src="{{ chibi_img.url }}" 
+                     alt="Happy Hange" 
+                     class="chibi-bounce"
+                     style="width: 180px; height: auto; filter: drop-shadow(0 0 15px var(--primary));">
+            {% else %}
+                <div style="font-size: 4rem;">✨</div>
+            {% endif %}
+        </div>
 
-<div class="container mt-5">
+        <h1 class="page-heading mb-3">Submission Success!</h1>
+        
+        <div class="about-text mb-4" style="font-size: 1.1rem; line-height: 1.6;">
+            {{ page.thank_you_text|richtext }}
+        </div>
 
-<div class="alert alert-success">
-{{ page.thank_you_text|richtext }}
+        <a href="{% pageurl page %}" class="cta-button d-inline-block px-5 py-2" style="text-decoration: none;">
+            Return to Gallery
+        </a>
+    </div>
 </div>
 
-<a href="/">Back to home</a>
+<style>
+/* Simple bounce animation to make the chibi look alive */
+.chibi-bounce {
+    animation: bounce 2s infinite ease-in-out;
+}
 
-</div>
-
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+</style>
 {% endblock %}

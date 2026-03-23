@@ -5,6 +5,7 @@ from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel, InlinePanel
 
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.images.models import Image
 from modelcluster.fields import ParentalKey
 
 
@@ -17,6 +18,13 @@ class FormField(AbstractFormField):
 
 class AboutPage(AbstractEmailForm):
     body = RichTextField(blank=True)
+    thank_you_image = models.ForeignKey(
+        Image,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name="+",
+    )
     thank_you_text = RichTextField(blank=True)
 
     to_address = models.CharField(max_length=255, blank=True)
@@ -40,6 +48,7 @@ class AboutPage(AbstractEmailForm):
         FieldPanel("modal_button_text"),
         InlinePanel("form_fields", label="Form fields"),
         FieldPanel("thank_you_text"),
+        FieldPanel("thank_you_image")
     ]
 
     promote_panels = Page.promote_panels

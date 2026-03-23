@@ -272,6 +272,8 @@ body {
 .modal-content.commission-modal, .modal-content.commission-modal input, textarea {
     background-color: var(--bg-soft);
     color: white;
+    border: 1px solid var(--primary); 
+    border-radius: var(--radius-md);
 }
 
 @keyframes move-gradient {
