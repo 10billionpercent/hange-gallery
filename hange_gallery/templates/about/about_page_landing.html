@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container d-flex align-items-center justify-content-center">
-    <div class="text-center p-5 commission-modal shadow-lg">
+    <div class="text-center p-5 commission-modal">
         
         <div class="mb-4">
             {% if page.thank_you_image %}
@@ -12,7 +12,7 @@
                 <img src="{{ chibi_img.url }}" 
                      alt="Happy Hange" 
                      class="chibi-bounce"
-                     style="width: 180px; height: auto; filter: drop-shadow(0 0 15px var(--primary));">
+                     style="width: 180px; height: auto; filter: drop-shadow(0 0 15px var(--success));">
             {% else %}
                 <div style="font-size: 4rem;">✨</div>
             {% endif %}
