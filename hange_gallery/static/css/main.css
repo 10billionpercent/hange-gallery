@@ -6,6 +6,10 @@ body {
     flex-direction: column;
 }
 
+a {
+   color: var(--primary);
+}
+
 .navbar .navbar-toggler {
     background-color: var(--bg-soft);
     border: none;
