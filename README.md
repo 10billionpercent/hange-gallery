@@ -64,20 +64,25 @@ The `initial_data.json` file loads some sample pages and artwork so you can expl
 
 ## Screenshots
 ### Home Page
-
+<img width="1919" height="866" alt="image" src="https://github.com/user-attachments/assets/7ba53943-fcdc-4117-ae1e-cf156b9af32d" />
 
 ### Gallery Page
-
+<img width="1919" height="859" alt="image" src="https://github.com/user-attachments/assets/1d9f491b-81b9-4650-964a-c23734d6da80" />
 
 ### Artwork Page
-
+<img width="1919" height="858" alt="image" src="https://github.com/user-attachments/assets/0abc32f0-2ee3-41c9-ae52-44c657375d45" />
 
 ### About Page
-
+<img width="1919" height="863" alt="image" src="https://github.com/user-attachments/assets/c0d7041f-bc85-439f-9af8-3c9381d0daa1" />
 
 ### Commission modal
+<img width="1919" height="854" alt="image" src="https://github.com/user-attachments/assets/785545c2-93df-404e-ac7c-7212cbd94dff" />
 
+### Commission form success state
+<img width="1919" height="866" alt="image" src="https://github.com/user-attachments/assets/8a65119d-ecc3-4fe7-954d-12d63b261738" />
 
+### Commission form error state
+<img width="1919" height="851" alt="image" src="https://github.com/user-attachments/assets/6adf228c-580e-4d25-850b-afea9fe60846" />
 
 ## Deployment
 I'll deploy the project soon.
